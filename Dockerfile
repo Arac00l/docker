@@ -28,7 +28,7 @@ RUN apt-get update && \
 WORKDIR /usr/src/soft
 
 # htslib-1.12 released this on 17 Mar 2021
-RUN wget --no-check-certificate https://github.com/samtools/htslib/releases/download/1.12/htslib-1.12.tar.bz2 && \
+RUN wget https://github.com/samtools/htslib/releases/download/1.12/htslib-1.12.tar.bz2 && \
     tar jxf htslib-1.12.tar.bz2 && \
     rm htslib-1.12.tar.bz2 && \
     cd htslib-1.12 && \
@@ -36,14 +36,14 @@ RUN wget --no-check-certificate https://github.com/samtools/htslib/releases/down
     make
 
 # libdeflate-1.7 released this on 10 Nov 2020
-RUN wget --no-check-certificate https://github.com/ebiggers/libdeflate/archive/refs/tags/v1.7.tar.gz && \
+RUN wget https://github.com/ebiggers/libdeflate/archive/refs/tags/v1.7.tar.gz && \
     tar  -xvzf v1.7.tar.gz && \
     rm v1.7.tar.gz && \
     cd libdeflate-1.7 && \
     make 
 
 # samtools-1.12 released this on 17 Mar 2021
-RUN wget --no-check-certificate https://github.com/samtools/samtools/releases/download/1.12/samtools-1.12.tar.bz2 && \
+RUN wget https://github.com/samtools/samtools/releases/download/1.12/samtools-1.12.tar.bz2 && \
     tar jxf samtools-1.12.tar.bz2 && \
     rm samtools-1.12.tar.bz2 && \
     cd samtools-1.12 && \
@@ -60,7 +60,7 @@ RUN wget https://gitlab.com/german.tischler/libmaus2/-/archive/2.0.751-release-2
     make install
 
 # biobambam2-2.0.174 released this on 10 August 2021
-RUN wget --no-check-certificate https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.174-release-20200810113137/biobambam2-2.0.174-release-20200810113137.tar.gz && \
+RUN wget https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.174-release-20200810113137/biobambam2-2.0.174-release-20200810113137.tar.gz && \
     tar xvzf biobambam2-2.0.174-release-20200810113137.tar.gz && \
     rm biobambam2-2.0.174-release-20200810113137.tar.gz && \
     cd biobambam2-2.0.174-release-20200810113137/ && \
