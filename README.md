@@ -10,6 +10,6 @@
 
 ### Installation
 
-Download image `docker pull denadac/den_samtools_v1:tagname`  
+Download image `docker pull denadac/den_samtools_v1`  
 
-Running a container `docker run denadac/den_samtools_v1:tagname`
+Running a container `docker run denadac/den_samtools_v1`
