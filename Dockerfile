@@ -2,15 +2,15 @@ FROM ubuntu:18.04
 
 MAINTAINER Denis Abelyan <arac00l2@yandex.ru>
 
+ENV SOFT='/soft'
+
 # Installing the prerequisites
 RUN apt-get update && \
     apt-get install -y \
-    apt-utils \
     wget \
     autoconf \
     automake \
     libtool \
-    pkg-config \
     make \
     gcc \
     perl \
@@ -21,7 +21,9 @@ RUN apt-get update && \
     liblzma-dev \
     libcurl4-gnutls-dev \
     libssl-dev \
-    libncurses5-dev && \
+    libncurses5-dev \
+    apt-utils \
+    pkg-config && \
     apt-get clean && apt-get purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -59,7 +61,7 @@ RUN wget https://gitlab.com/german.tischler/libmaus2/-/archive/2.0.751-release-2
     make && \
     make install
 
-# biobambam2-2.0.174 released this on 10 August 2021
+# biobambam2-2.0.174 released this on 10 August 2020
 RUN wget https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.174-release-20200810113137/biobambam2-2.0.174-release-20200810113137.tar.gz && \
     tar xvzf biobambam2-2.0.174-release-20200810113137.tar.gz && \
     rm biobambam2-2.0.174-release-20200810113137.tar.gz && \
@@ -69,10 +71,12 @@ RUN wget https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.174-release
 	--prefix=${HOME}/biobambam2 && \
     make install
 
-ENV PATH=${PATH}:/usr/src/soft/htslib-1.12
-ENV PATH=${PATH}:/usr/src/soft/samtools-1.12
-ENV PATH=${PATH}:/usr/src/soft/libdeflate-1.7
-ENV PATH=${PATH}:/usr/src/soft/libmaus2-2.0.751-release-20200915110621
-ENV PATH=${PATH}:/usr/src/soft/biobambam2-2.0.174-release-20200810113137
+ENV HTSLIB='/usr/src/soft/htslib-1.12'
+ENV SAMTOOLS='/usr/src/soft/samtools-1.12'
+ENV LIBDEFLATE='/usr/src/soft/libdeflate-1.7'
+ENV LIBMAUS2='/usr/src/soft/libmaus2-2.0.751-release-20200915110621'
+ENV BIOBAMBAM2='/usr/src/soft/biobambam2-2.0.174-release-20200810113137'
+
+ENV PATH=${PATH}:$HTSLIB:$SAMTOOLS:$LIBDEFLATE:$LIBMAUS2:$BIOBAMBAM2
 
 CMD ["bash"]
