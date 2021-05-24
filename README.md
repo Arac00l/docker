@@ -12,4 +12,4 @@
 
 Download image `docker pull denadac/den_samtools_v1`  
 
-Running a container `docker run denadac/den_samtools_v1`
+Running a container `docker run -it denadac/den_samtools_v1`
